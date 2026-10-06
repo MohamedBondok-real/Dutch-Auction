@@ -22,7 +22,7 @@ contract DutchAuction {
     uint256 public immutable startAt; 
     uint256 public immutable endAt; 
     uint256 public immutable discountRate; 
-    bool stopped;
+    bool public stopped;
  
     constructor ( 
         address _nft, 
