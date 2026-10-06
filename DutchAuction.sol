@@ -47,6 +47,7 @@ contract DutchAuction {
         return startingPrice - discount; 
     } 
     function buy () external payable { 
+        require(!stopped, "Auction Already Completed");
         require(block.timestamp < endAt, dutchAuction_AuctionEnded()); 
  
         uint256 price = getPrice(); 
