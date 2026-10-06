@@ -22,6 +22,7 @@ contract DutchAuction {
     uint256 public immutable startAt; 
     uint256 public immutable endAt; 
     uint256 public immutable discountRate; 
+    bool stopped;
  
     constructor ( 
         address _nft, 
@@ -50,6 +51,8 @@ contract DutchAuction {
  
         uint256 price = getPrice(); 
         require(msg.value >= price, dutchAuction_NotEnoughPrice()); 
+
+        stopped = true;
  
         nft.transferFrom(seller, msg.sender, nftId); 
         uint256 refund = msg.value - price; 
